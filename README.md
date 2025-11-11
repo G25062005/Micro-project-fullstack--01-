@@ -77,25 +77,40 @@ Copy code
 ## 📁 Project Structure
 
 DairyManagement/
-│ manage.py
-│ db.sqlite3
-│ requirements.txt
-│ README.md
 │
-├── DairyManagement/ # Project settings
-│ ├── settings.py
-│ ├── urls.py
-│ └── wsgi.py
+├── manage.py             # Django's command-line utility
+├── db.sqlite3            # SQLite database file (or other database files)
+├── requirements.txt      # List of project dependencies
+├── README.md             # Project documentation and setup instructions
 │
-└── dairy/ # Main Application
-├── models.py
-├── views.py
-├── urls.py
-├── templates/
-└── static/
-
-yaml
-Copy code
+├── DairyManagement/      # ⚙️ Project Configuration Folder (Top-level Django project directory)
+│   ├── __init__.py         # Makes the directory a Python package
+│   ├── asgi.py             # ASGI configuration for async deployments (modern Django)
+│   ├── settings.py         # Main project settings (database, installed apps, templates, static files)
+│   ├── urls.py             # Main project URL declarations (routes app-level URLs)
+│   └── wsgi.py             # WSGI configuration for deployment
+│
+└── dairy/                # 🥛 Main Application Folder
+    ├── migrations/         # Database migrations (automatically created)
+    │   └── __init__.py
+    │
+    ├── static/             # Application-specific static assets (CSS, JS, images)
+    │   ├── css/
+    │   └── js/
+    │
+    ├── templates/          # Application-specific HTML templates
+    │   └── dairy/          # Best practice: namespace templates to avoid conflicts
+    │       ├── base.html
+    │       ├── home.html
+    │       └── entry_list.html
+    │
+    ├── __init__.py           # Makes the directory a Python package
+    ├── admin.py              # Configuration for the Django admin interface
+    ├── apps.py               # Application configuration class
+    ├── models.py             # Database models (defining tables and fields)
+    ├── tests.py              # Application-specific tests
+    ├── urls.py               # Application-specific URL patterns
+    └── views.py              # View functions/classes (handling request/response logic)
 
 ---
 
