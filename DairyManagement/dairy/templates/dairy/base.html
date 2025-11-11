@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dairy Management{% endblock %}</title>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'dairy/css/style.css' %}">
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="{% static 'dairy/css/dashboard.css' %}">
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo">🥛 Dairy Management</div>
+        <nav>
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                    <a href="{% url 'dairy:admin_dashboard' %}">Dashboard</a>
+                    <a href="{% url 'dairy:manage_products' %}">Products</a>
+                    <a href="{% url 'dairy:manage_orders' %}">Orders</a>
+                {% else %}
+                    <a href="{% url 'dairy:shop' %}">Shop</a>
+                    <a href="{% url 'dairy:order_history' %}">My Orders</a>
+                {% endif %}
+                <a href="{% url 'dairy:logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'dairy:login' %}">Login</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Optional Footer -->
+    <footer style="text-align:center; padding:1rem; background:#f5f6fa; margin-top:2rem;">
+        &copy; {{ now.year }} Dairy Management. All Rights Reserved.
+    </footer>
+</body>
+</html>

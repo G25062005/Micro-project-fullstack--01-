@@ -1,0 +1,52 @@
+Set-Location "C:\Users\Girish\Desktop\DairyManagement"
+
+@'
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+db.sqlite3
+/media
+/staticfiles
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Pytest
+.cache/
+
+# Pipenv
+Pipfile.lock
+
+# macOS
+.DS_Store
+
+# IDE / Editor folders
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Node
+node_modules/
+
+# Local env files
+.env
+.env.* 
+'@ | Out-File -Encoding UTF8 .gitignore

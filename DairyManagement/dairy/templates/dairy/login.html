@@ -1,0 +1,19 @@
+{% extends 'dairy/base.html' %}
+{% block title %}Login - Dairy Management{% endblock %}
+{% block content %}
+<h2>🥛 Dairy Management System</h2>
+<p>Please login to continue</p>
+
+<form method="post">
+    {% csrf_token %}
+    <label>Username</label>
+    <input type="text" name="username" required>
+    <label>Password</label>
+    <input type="password" name="password" required>
+    <button type="submit">Login</button>
+</form>
+
+<p><b>Demo Credentials:</b></p>
+<p>Admin: admin / admin123</p>
+<p>Customer: customer / customer123</p>
+{% endblock %}

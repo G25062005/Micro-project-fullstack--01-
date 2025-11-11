@@ -1,0 +1,20 @@
+{% extends 'dairy/base.html' %}
+{% block title %}Order History{% endblock %}
+{% block content %}
+<h2>My Order History</h2>
+{% if orders %}
+    {% for order in orders %}
+        <h3>Order #{{ order.id }}</h3>
+        <p>Status: {{ order.get_status_display }}</p>
+        <p>Date: {{ order.created_at|date:"F d, Y H:i" }}</p>
+        <ul>
+            {% for item in order.items.all %}
+                <li>{{ item.product.name }} x{{ item.quantity }} — ${{ item.get_subtotal|floatformat:2 }}</li>
+            {% endfor %}
+        </ul>
+        <p><b>Total:</b> ${{ order.get_total|floatformat:2 }}</p>
+    {% endfor %}
+{% else %}
+    <p>No orders yet! You haven't placed any orders yet.</p>
+{% endif %}
+{% endblock %}
